@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="main w-screen h-screen flex flex-col justify-center items-center" style="background-color: #EFE1D1">
+        <h1 class="text-7xl italianno">Django ToDo</h1>
+        <div class="w-1/3 h-2/3 mt-12 rounded-3xl flex flex-col items-center" style="background-color: #3F2E3E;">
+            <div class="input w-3/4 h-auto mt-10 flex items-center">
+                <p class="italianno text-3xl" style="color: #EFE1D1;">New Task:</p>
+                <form method="post" class="w-3/4 flex">
+                    {% csrf_token %}
+                    <input type="text" class="w-3/4 h-8 ml-5 rounded italianno text-3xl p-3" placeholder="enter new task">
+                    <input type="submit" class="w-1/4 rounded ml-3 italianno text-2xl" style="background-color: #EFE1D1;" value="ADD">
+                </form>
+            </div>
+            <div class="tasks w-4/5 h-full mt-5 mb-5 rounded-2xl flex flex-col items-center p-3" style="background-color: #301E2F;">
+                <h2 class="text-4xl italianno w-full text-center" style="color: #EFE1D1; border-bottom:1px solid #EFE1D1;">All Tasks</h2>
+                <table class="italianno text-2xl w-full" style="color: #EFE1D1; border-bottom: 1px solid #EFE1D1;">
+                    <tr class="flex justify-between w-full pl-3 pr-3">
+                        <td>--Checkbox--</td>
+                        <td>--Task Name--</td>
+                        <td>--Delete--</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
