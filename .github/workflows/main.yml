@@ -22,12 +22,13 @@ jobs:
     - name: Deploy to EC2
       run: |
         ssh ubuntu@13.200.203.157 << 'EOF'
-          cd /path/to/your/project
+          cd /home/ubuntu/Django-ToDo/
           git pull origin main
           source /home/ubuntu/Django-ToDo/env/bin/activate
+          cd ./todo/
           pip install -r requirements.txt
           python manage.py migrate
           python manage.py collectstatic --noinput
-          sudo systemctl restart gunicorn
+          sudo systemctl restart djangoApp
           sudo systemctl restart nginx
         EOF
