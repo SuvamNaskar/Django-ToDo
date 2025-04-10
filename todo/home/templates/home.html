@@ -23,7 +23,7 @@
                         <td><input type="checkbox" name="check{{task.id}}"></td>
                         {% endif %}
                         <td>{{ task.task }}</td>
-                        <td><input type="submit" value="X" name="del{{task.id}}" style="color: #ffffff; font-family: Arial, Helvetica, sans-serif; background: none;"></td>
+                        <td><a href="{% url 'delete_task' task.id %}">🗑</a></td>
                     </tr>
                     {% endfor %}
                 </table>
