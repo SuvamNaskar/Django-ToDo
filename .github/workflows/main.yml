@@ -26,7 +26,7 @@ jobs:
           # Commit the latest changes to the repository
           git add .
           git commit -m "Deploying latest changes" || echo "No changes to commit"
-          # Pull the latest changes from the main branch
+          git push
           git fetch --all
           git pull
           source /home/ubuntu/Django-ToDo/env/bin/activate
