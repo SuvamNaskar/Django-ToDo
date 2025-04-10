@@ -23,3 +23,9 @@ def delete_task(req, task_id):
     task = get_object_or_404(Tasks, id=task_id)
     task.delete()
     return redirect('home')
+
+def toggle_status(req, task_id):
+    task = get_object_or_404(Tasks, id=task_id)
+    task.status = 0 if task.status == 1 else 1
+    task.save()
+    return redirect('home')
