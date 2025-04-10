@@ -20,5 +20,6 @@ from home.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home')
+    path('', home, name='home'),
+    path('delete/<int:task_id>/', delete_task, name='delete_task'),
 ]
