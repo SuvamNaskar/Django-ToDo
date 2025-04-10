@@ -27,8 +27,8 @@ jobs:
           git add .
           git commit -m "Deploying latest changes" || echo "No changes to commit"
           # Pull the latest changes from the main branch
-          git fetch origin main
-          git pull origin main
+          git fetch --all
+          git pull
           source /home/ubuntu/Django-ToDo/env/bin/activate
           cd ./todo/
           pip install -r requirements.txt
