@@ -23,6 +23,11 @@ jobs:
       run: |
         ssh ubuntu@13.200.203.157 << 'EOF'
           cd /home/ubuntu/Django-ToDo/
+          # Commit the latest changes to the repository
+          git add .
+          git commit -m "Deploying latest changes" || echo "No changes to commit"
+          # Pull the latest changes from the main branch
+          git fetch origin main
           git pull origin main
           source /home/ubuntu/Django-ToDo/env/bin/activate
           cd ./todo/
