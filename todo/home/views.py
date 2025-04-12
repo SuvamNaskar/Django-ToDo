@@ -4,6 +4,7 @@ from .models import Tasks
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib import messages
+from django.contrib.auth import logout
 
 def home(req):
     
@@ -83,3 +84,8 @@ def register(req):
         return redirect('login')
     
     return render(req, 'register.html')
+
+def logout_req(req):
+    logout(req)
+    messages.info(req, 'Logged out successfully')
+    return redirect('home')
