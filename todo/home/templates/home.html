@@ -8,8 +8,8 @@
                 <a href="{% url 'login' %}" class="hover:text-yellow-500">Login</a>
                 <a href="{% url 'register' %}" class="hover:text-yellow-500">Register</a>
             {% else %}
-                <a href="#" class="hover:text-yellow-500">{{ request.user.first_name }}</a>
-                <a href="#" class="hover:text-yellow-500">Logout</a>
+                <a href="#" class="text-yellow-500">{{ request.user.first_name }} {{ request.user.last_name }}</a>
+                <a href="{% url 'logout' %}" class="hover:text-yellow-500">Logout</a>
             {% endif %}
         </nav>
         <h1 class="text-7xl italianno">Django ToDo</h1>

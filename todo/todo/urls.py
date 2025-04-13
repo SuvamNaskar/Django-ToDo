@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('login/', login_page, name='login'),
+    path('logout/', logout_req, name='logout'),
     path('register/', register, name='register'),
     path('delete/<int:task_id>/', delete_task, name='delete_task'),
     path('toggle/<int:task_id>/', toggle_status, name='toggle_status'),
