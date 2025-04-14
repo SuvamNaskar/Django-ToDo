@@ -18,7 +18,7 @@
                 <p class="italianno text-xl" style="color: #EFE1D1;">New Task:</p>
                 <form method="post" class="w-3/4 flex">
                     {% csrf_token %}
-                    <input type="text" class="w-3/4 h-8 ml-5 rounded italianno text-xl p-3" placeholder="enter new task" name="newTask">
+                    <input type="text" class="w-3/4 h-8 ml-5 rounded italianno text-xl p-3" placeholder="enter new task" name="newTask" required>
                     <input type="submit" class="w-1/4 rounded ml-3 italianno text-xl" style="background-color: #EFE1D1;" value="ADD">
                 </form>
             </div>
