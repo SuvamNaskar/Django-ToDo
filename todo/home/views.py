@@ -13,13 +13,15 @@ def home(req):
     if req.method == 'POST':
         data = req.POST
         task = data.get('newTask')
+        user = req.user
 
         Tasks.objects.create(
+            user = user,
             task = task,
             status = 0
         )
         
-    res = Tasks.objects.all()
+    res = Tasks.objects.filter(user=req.user)
     context = {
                 'page': 'Django ToDo',
                 'tasks': res,
@@ -56,7 +58,6 @@ def login_page(req):
 
         if user is not None:
             login(req, user)
-            messages.info(req, 'Logged in successfully')
             return redirect('home')
         else:
             messages.error(req, 'Invalid credentials')
@@ -91,5 +92,4 @@ def register(req):
 
 def logout_req(req):
     logout(req)
-    messages.info(req, 'Logged out successfully')
     return redirect('home')
