@@ -5,30 +5,36 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='login')
 def home(req):
     
     if req.method == 'POST':
         data = req.POST
         task = data.get('newTask')
+        user = req.user
 
         Tasks.objects.create(
+            user = user,
             task = task,
             status = 0
         )
         
-    res = Tasks.objects.all()
+    res = Tasks.objects.filter(user=req.user)
     context = {
                 'page': 'Django ToDo',
                 'tasks': res,
               }
     return render(req, 'home.html', context)
 
+@login_required(login_url='login')
 def delete_task(req, task_id):
     task = get_object_or_404(Tasks, id=task_id)
     task.delete()
     return redirect('home')
 
+@login_required(login_url='login')
 def toggle_status(req, task_id):
     task = get_object_or_404(Tasks, id=task_id)
     task.status = 0 if task.status == 1 else 1
@@ -52,7 +58,6 @@ def login_page(req):
 
         if user is not None:
             login(req, user)
-            messages.info(req, 'Logged in successfully')
             return redirect('home')
         else:
             messages.error(req, 'Invalid credentials')
@@ -87,5 +92,4 @@ def register(req):
 
 def logout_req(req):
     logout(req)
-    messages.info(req, 'Logged out successfully')
     return redirect('home')

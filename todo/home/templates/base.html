@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ page }}</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
-    <!-- <link rel="shortcut icon" href="./3248209.png" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="{% static 'home/3248209.png' %}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
@@ -15,6 +16,21 @@
             font-family: "Playfair Display", serif;
             font-weight: 400;
             font-style: normal;
+        }
+        .glow {
+            animation: pulse 4s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                color: rgba(245, 158, 11);
+            }
+            50% {
+                color: rgb(255, 231, 190);
+            }
+            100% {
+                color: rgba(245, 158, 11);
+            }
         }
     </style>
 </head>
