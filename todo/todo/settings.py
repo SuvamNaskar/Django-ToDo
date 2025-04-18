@@ -42,9 +42,15 @@ INSTALLED_APPS = [
 
 EXTERNAL_APPS = [
     'home',
+    'tailwind',
+    'theme',
 ]
 
+TAILWIND_APP_NAME = 'theme'
+
 INSTALLED_APPS += EXTERNAL_APPS
+
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
