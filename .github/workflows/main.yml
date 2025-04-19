@@ -24,7 +24,8 @@ jobs:
         ssh ubuntu@13.200.203.157 << 'EOF'
           cd /home/ubuntu/Django-ToDo/
           git fetch --all
-          git pull
+          git pull origin main
+            echo "${{ secrets.ENV_FILE }}" > .env
           source /home/ubuntu/Django-ToDo/env/bin/activate
           cd ./todo/
           pip install -r requirements.txt
