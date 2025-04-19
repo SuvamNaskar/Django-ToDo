@@ -18,6 +18,11 @@ jobs:
         echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H 13.200.203.157 >> ~/.ssh/known_hosts
+        
+    - name: Upload .env file
+      run: |
+        echo "${{ secrets.ENV_FILE }}" | ssh ubuntu@13.200.203.157 "cat > /home/ubuntu/Django-ToDo/todo/.env"
+
 
     - name: Deploy to EC2
       run: |
@@ -25,7 +30,6 @@ jobs:
           cd /home/ubuntu/Django-ToDo/
           git fetch --all
           git pull origin main
-          echo "${{ secrets.ENV_FILE }}" > .env
           chmod +x /home/ubuntu/Django-ToDo/env/bin/activate
           source /home/ubuntu/Django-ToDo/env/bin/activate
           cd ./todo/
@@ -36,3 +40,8 @@ jobs:
           sudo systemctl restart djangoApp
           sudo systemctl restart nginx
         EOF
+        
+
+    - name: Verify deployment
+      run: |
+        curl --fail http://13.200.203.157/ || exit 1
