@@ -30,7 +30,7 @@ SECRET_KEY =os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
 
-ALLOWED_HOSTS = ['13.200.203.157', '127.0.0.1']
+ALLOWED_HOSTS = ['13.200.203.157', '127.0.0.1', 'todo.django.suvam.tech']
 
 
 # Application definition
